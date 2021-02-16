@@ -2,6 +2,7 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
+import './header.scss'
 
 export default function Header() {
   return (
