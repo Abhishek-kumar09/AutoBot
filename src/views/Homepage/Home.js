@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/Header/Header";
-import "./Home.css";
+import "./Home.scss";
 import heroBg from "../../assets/img/hero-bg.gif";
 
 export default function Home() {
