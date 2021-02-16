@@ -18,15 +18,43 @@ import { Apps, CloudDownload } from "@material-ui/icons";
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
 
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
+import "./header.css";
 
 const useStyles = makeStyles(styles);
+
+function SearchBar() {
+  return (
+    <div className="search-box">
+      <input
+        className="search-txt"
+        type="text"
+        name=""
+        placeholder="Type to search"
+      />
+      <a href="#" className="search-btn">
+        <FontAwesomeIcon icon={faSearch} />
+      </a>
+    </div>
+  );
+}
 
 export default function HeaderLinks(props) {
   const classes = useStyles();
   return (
-    <List className={classes.list}>
+    <List className={classes.list} style={{ border: "1px solid red" }}>
       <ListItem className={classes.listItem}>
+        <SearchBar />
+      </ListItem>
+    </List>
+  );
+}
+
+/*
+<ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
           buttonText="Components"
@@ -64,7 +92,7 @@ export default function HeaderLinks(props) {
           <IconButton aria-label="Delete">
             <DeleteIcon />
           </IconButton>
-        </Tooltip>*/}
+        </Tooltip>
         <Tooltip
           id="instagram-twitter"
           title="Follow us on twitter"
@@ -115,6 +143,4 @@ export default function HeaderLinks(props) {
           </Button>
         </Tooltip>
       </ListItem>
-    </List>
-  );
-}
+*/
