@@ -1,12 +1,13 @@
 import React from "react";
-import Header from "../../components/Header/Header";
-import "./Home.css";
 import heroBg from "../../assets/img/hero-bg.gif";
+import Header from "../../components/Header/Header";
+import "./Home.scss";
 
-export default function Home() {
+export default function Home({user}) {
+
   return (
     <div id="home">
-      <Header />
+      <Header user={user} />
       <section className="hero">
         <div>
           <h2>
