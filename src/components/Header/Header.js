@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import './header.scss'
 import { signInWithGoogle, logout } from '../../firebase'
+import StripeCheckoutButton from '../stripe'
 
 export default function Header({ user }) {
   const [openDialog, setopenDialog] = useState(false);
@@ -22,7 +23,7 @@ export default function Header({ user }) {
   }
 
   const handleLogout = () => {
-    logout().then(()=> {
+    logout().then(() => {
       console.log("logout Successfull")
       setopenDialog(false)
     }).catch((e) => {
@@ -34,7 +35,8 @@ export default function Header({ user }) {
     <div id="header">
       <h3>Auto Bot</h3>
       <section className="button-group">
-        <button className="block round">Buy</button>
+        <StripeCheckoutButton />
+        {/* <button className="block round">Buy</button> */}
         <button className="block round">Auction</button>
         <button className="block round">Sell</button>
         <button className="block round">Today&apos;s Hits</button>
@@ -69,7 +71,7 @@ export default function Header({ user }) {
         </DialogContent>
         <DialogContent className="dialog-content">
           {user
-            ? <Button className="block round" style={{padding: '8px 24px'}} onClick={handleLogout}>Logout</Button>
+            ? <Button className="block round" style={{ padding: '8px 24px' }} onClick={handleLogout}>Logout</Button>
             : <Button className="block round accent" onClick={handleGoogleAuth}>Google Sign In</Button>
           }
         </DialogContent>
