@@ -18,15 +18,15 @@ const algolia = algoliasearch(
 );
 const index = algolia.initIndex(process.env.ALGOLIA_INDEX_NAME);
 
-// Get all contacts from Firebase
-database.ref('/').once('value', (contacts) => {
+// Get all datasets from Firebase
+database.ref('/').once('value', (db_datasets) => {
 
   // Build an array of all records to push to Algolia
   const records = [];
-  contacts.forEach(contact => {
+  db_datasets.forEach(db_dataset => {
     // get the key and data from the snapshot
-    const childKey = contact.key;
-    const childData = contact.val();
+    const childKey = db_dataset.key;
+    const childData = db_dataset.val();
     // We set the Algolia objectID as the Firebase .key
     childData.objectID = childKey;
     // Add object for indexing
