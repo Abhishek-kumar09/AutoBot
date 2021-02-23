@@ -7,6 +7,6 @@ import ReactDOM from "react-dom";
 // import LandingPage from "views/LandingPage/LandingPage.js";
 // import ProfilePage from "views/ProfilePage/ProfilePage.js";
 // import LoginPage from "views/LoginPage/LoginPage.js";
-import App from './App';
+import App from "./App";
 
 ReactDOM.render(<App />, document.getElementById("root"));
