@@ -60,14 +60,13 @@ export default function Header({ user }) {
       </Grid>
       <div className="auth-btn">
         <button className="block round" onClick={() => { setopenDialog(true) }}>{user ? user.displayName : 'Login'}</button>
-        <button className="block round accent">Sign up</button>
       </div>
 
       <Dialog maxWidth={'xs'} onClose={handleClose} open={openDialog} style={{ textAlign: 'center' }}>
-        <DialogTitle id="simple-dialog-title">Login to AutoBot</DialogTitle>
+        <DialogTitle id="simple-dialog-title">{user? 'Logout From AutoBot' : 'Login to AutoBot'}</DialogTitle>
         <DialogContent className="dialog-content">
           <Typography>
-            Your destination for all the ML queries
+            Your destination for all the ML queries.
           </Typography>
           <Typography>
             Stop searching for your desired dataset and start building immediately.
