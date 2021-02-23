@@ -33,14 +33,6 @@
     }
   }
 
-  .divider {
-    background: url("../../assets/img/wave.svg") no-repeat center bottom;
-    background-size: cover;
-    width: 100vw;
-    height: 103px;
-    z-index: 998;
-  }
-
   #why-autobot {
     display: flex;
     align-items: center;
@@ -50,6 +42,7 @@
     width: 100vw;
     background-color: #00cba9;
     margin-top: 250px;
+    color: white;
     
     
     height: 100vh;
@@ -58,7 +51,7 @@
       background: url("../../assets/img/wave.svg") center bottom;
       
       background-size: cover;
-      bottom: 100%;
+      bottom: 90%;
       content: "";
       height: 400px;
       position: absolute;
