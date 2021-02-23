@@ -11,6 +11,8 @@ import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import "./header.scss";
 import { signInWithGoogle, logout } from "../../firebase";
+import StripeCheckoutButton from "../stripe";
+import { Link, useHistory } from "react-router-dom";
 
 export default function Header({ user }) {
   const [openDialog, setopenDialog] = useState(false);
@@ -18,6 +20,8 @@ export default function Header({ user }) {
   const handleClose = () => {
     setopenDialog(false);
   };
+
+  const history = useHistory();
 
   const handleGoogleAuth = () => {
     signInWithGoogle()
@@ -43,10 +47,20 @@ export default function Header({ user }) {
 
   return (
     <div id="header">
-      <h3>Auto Bot</h3>
+      <Link to="/" style={{ textDecoration: "none", color: "#000" }}>
+        <h3>Auto Bot</h3>
+      </Link>
       <section className="button-group">
-        <button className="block round">Buy</button>
-        <button className="block round">Auction</button>
+        <StripeCheckoutButton />
+        {/* <button className="block round">Buy</button> */}
+        <button
+          className="block round"
+          onClick={() => {
+            history.push("/auction");
+          }}
+        >
+          Auction
+        </button>
         <button className="block round">Sell</button>
         <button className="block round">Today&apos;s Hits</button>
       </section>
