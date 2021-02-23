@@ -44,6 +44,6 @@ export default function Home({ user }) {
   );
 }
 
-// function Card({ image, title, description, btn }) {
-//   return <div></div>;
-// }
+export function Card({ image, title, description, btn }) {
+  return <div></div>;
+}
