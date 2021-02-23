@@ -1,35 +1,68 @@
 #home {
-    background-color: transparent;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  #hero {
     display: flex;
-    flex-direction: column;
-    position: relative;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-inline: 5vw;
+    height: 100vh;
 
-    .hero {
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-inline: 1vw;
+
+      .btn-group {
         display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding-inline: 5vw;
-        height: 100vh;
+        flex-direction: row;
+        margin-top: 2vw;
+        width: 80%;
+        justify-content: space-around;
 
-        div {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-inline: 1vw;
-
-            .btn-group {
-                display: flex;
-                flex-direction: row;
-                margin-top: 2vw;
-                width: 80%;
-                justify-content: space-around;
-
-                .block {
-                    height: 7vh;
-                    font-size: medium;
-                }
-            }
+        .block {
+          height: 7vh;
+          font-size: medium;
         }
+      }
     }
+  }
+
+  .divider {
+    background: url("../../assets/img/wave.svg") no-repeat center bottom;
+    background-size: cover;
+    width: 100vw;
+    height: 103px;
+    z-index: 998;
+  }
+
+  #why-autobot {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-inline: 20vw;
+    position: relative;
+    width: 100vw;
+    background-color: #00cba9;
+    margin-top: 250px;
+    
+    
+    height: 100vh;
+
+    &::before {
+      background: url("../../assets/img/wave.svg") center bottom;
+      
+      background-size: cover;
+      bottom: 100%;
+      content: "";
+      height: 400px;
+      position: absolute;
+      width: 100%;
+    }
+  }
 }
