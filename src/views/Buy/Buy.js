@@ -10,6 +10,7 @@ import {
 import Header from "components/Header/Header";
 import React, { useEffect, useState } from "react";
 import { database } from "../../firebase/index";
+import "./Buy.css";
 
 import {
   ClearRefinements,
@@ -35,7 +36,6 @@ const Hits = ({ hits }) => {
       justify="space-evenly"
       alignItems="center"
       style={{
-        backgroundColor: "blue",
         flexWrap: "wrap",
       }}
     >
@@ -56,10 +56,11 @@ function Hit({ item, index }) {
       <Card
         elevation={10}
         style={{
-          height: "100%",
+          height: "400px",
           display: "flex",
           flexDirection: "column",
           backgroundColor: "#E5F6F2",
+          overflowY: "hidden",
         }}
       >
         <div
@@ -76,7 +77,11 @@ function Hit({ item, index }) {
         <CardContent style={{ flexGrow: 1 }}>
           <Typography className={classes.typography}>
             {" "}
-            {item.description}{" "}
+            {typeof item.description == "string"
+              ? item.description.length < 200
+                ? item.description
+                : `${item.description.substring(0, 200)}...`
+              : " "}{" "}
           </Typography>
           <Typography className={classes.typography}>
             category: {item.category}
@@ -130,12 +135,14 @@ export default function Buy() {
           <Grid spacing={3}>
             <ClearRefinements />
             <h3>Data types</h3>
-            <RefinementList attribute="category" />
+            <RefinementList
+              attribute="category"
+              style={{ backgroundColor: "red" }}
+            />
             <Configure hitsPerPage={20} />
           </Grid>
           <div
             style={{
-              backgroundColor: "blue",
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
