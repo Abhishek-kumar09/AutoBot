@@ -5,9 +5,10 @@ import Home from "views/Homepage/Home";
 import Components from "views/Components/Components.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
 import ProfilePage from "views/ProfilePage/ProfilePage.js";
-import Success from "components/stripe/success";
-import Failure from "components/stripe/failure";
-import Auction from "views/Auction";
+import Success from 'components/stripe/success'
+import Failure from 'components/stripe/failure'
+import Auction from 'views/Auction'
+import Sell from 'views/Sell'
 import Buy from "views/Buy/Buy";
 import { InstantSearch } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch";
@@ -24,23 +25,60 @@ const renderRoutes = (user) => (
         <Route
           path="/"
           exact
-          render={(props) => <Home user={user} {...props} />}
+          render={props => (
+            <Home user={user} {...props} />
+          )}
         />
         <Route
           path="/components"
           exact
-          render={(props) => <Components {...props} />}
+          render={props => (
+            <Components {...props} />
+          )}
         />
         <Route
           path="/login"
           exact
-          render={(props) => <LoginPage {...props} />}
+          render={props => (
+            <LoginPage {...props} />
+          )}
         />
-        <Route path="/profile-page" exact render={(props) => <ProfilePage />} />
-        <Route path="/success" exact render={(props) => <Success />} />
-        <Route path="/canceled" exact render={(props) => <Failure />} />
-        <Route path="/auction" exact render={(props) => <Auction />} />
+        <Route
+          path="/profile-page"
+          exact
+          render={props => (
+            <ProfilePage />
+          )}
+        />
+        <Route
+          path="/success"
+          exact
+          render={props => (
+            <Success />
+          )}
+        />
+        <Route
+          path="/canceled"
+          exact
+          render={props => (
+            <Failure />
+          )}
+        />
+        <Route
+          path="/auction"
+          exact
+          render={props => (
+            <Auction user={user} />
+          )}
+        />
         <Route path="/buy" exact render={(props) => <Buy />} />
+        <Route
+          path="/sell"
+          exact
+          render={props => (
+            <Sell user={user} />
+          )}
+        />
       </Switch>
     </Suspense>
   </InstantSearch>

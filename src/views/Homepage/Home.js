@@ -17,7 +17,7 @@ export default function Home({ user }) {
             immediately. We provide the data on your preferences.
           </h3>
           <div className="btn-group">
-            <a>
+            <a href="/">
               <button className="block round accent">
                 Start Free! No Credit Card Required
               </button>
@@ -44,6 +44,6 @@ export default function Home({ user }) {
   );
 }
 
-function Card({ image, title, description, btn }) {
+export function Card({ image, title, description, btn }) {
   return <div></div>;
 }
