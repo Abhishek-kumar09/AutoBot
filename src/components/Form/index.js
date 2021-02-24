@@ -8,7 +8,6 @@ import {
   Paper,
   Typography
 } from '@material-ui/core';
-// import axios from 'axios';
 import { useSnackbar } from 'notistack';
 import React, { useEffect, useState } from 'react';
 import {
@@ -20,7 +19,7 @@ import { firestore } from '../../firebase';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '65%',
+    width: '70%',
     margin: '0px auto 100px',
     [theme.breakpoints.down('sm')]: {
       width: '85%'
@@ -63,7 +62,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Form({ title, user, ...rest }) {
+function Form({ title, user, hide, setHide, ...rest }) {
   const classes = useStyles();
 
   const [formData, updateFormData] = useState({});
@@ -90,7 +89,7 @@ function Form({ title, user, ...rest }) {
 
   const handleSubmit = e => {
     setSubmitting(1);
-    console.log('d : ' + formData.date);
+    formData.window = window.location.href.split("/")[3];
     e.preventDefault();
     firestore.collection("auctionData").doc(`${formData.email}_${formData.dbname}`)
       .set(formData)
@@ -100,6 +99,11 @@ function Form({ title, user, ...rest }) {
         setTimeout(() => {
           enqueueSnackbar('Hang tight, usually we reply in 4 working days', { variant: 'info' })
         }, 1000);
+        if (hide === false) {
+          setTimeout(() => {
+            setHide(true)
+          }, 4000)
+        }
       }).catch(e => {
         enqueueSnackbar("Shit! something bad happened")
       })
@@ -269,6 +273,45 @@ function Form({ title, user, ...rest }) {
             errorMessages={['This is a required field']}
           />
 
+          <Grid container justify="space-between">
+            <Grid md={6} xs={12} className={classes.rightPadding}>
+              <Typography variant="caption">Dataset Size expanded</Typography>
+              <TextValidator
+                key="dataset_size"
+                placeholder="in GB or MB"
+                className={classes.textField}
+                variant="outlined"
+                value={formData.dataset_size}
+                fullWidth
+                name="dataset_size"
+                onChange={handleChange}
+                validators={[
+                  'required'
+                ]}
+                errorMessages={[
+                  'This is a required field'
+                ]}
+              />
+            </Grid>
+            <Grid md={6} xs={12} className={classes.leftPadding}>
+              <Typography variant="caption">Download Size</Typography>
+              <TextValidator
+                key="download_size"
+                className={classes.textField}
+                placeholder="The archived download size"
+                variant="outlined"
+                value={formData.download_size}
+                fullWidth
+                name="download_size"
+                onChange={handleChange}
+                validators={['required']}
+                errorMessages={[
+                  'This is a required field'
+                ]}
+              />
+            </Grid>
+          </Grid>
+
           <Typography variant="caption">Link to datset drive or storage</Typography>
           <TextValidator
             key="link"
@@ -282,7 +325,7 @@ function Form({ title, user, ...rest }) {
             validators={['required', 'matchRegexp:^(http(s)?://)']}
             errorMessages={[
               'This is a required field',
-              'Enter Correct social platform link'
+              'Enter Correct dataset link'
             ]}
           />
 
@@ -301,6 +344,10 @@ function Form({ title, user, ...rest }) {
               type="submit"
               variant="contained"
               color="secondary"
+              style={{
+                marginTop: '32px',
+                padding: '10px'
+              }}
             >Submit Request</Button>
           ) : (
               <div className={classes.submissions}>
