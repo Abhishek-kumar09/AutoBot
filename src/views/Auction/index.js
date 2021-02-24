@@ -1,3 +1,6 @@
+import { makeStyles } from '@material-ui/core';
+import Form from 'components/Form';
+import Header from 'components/Header/Header';
 import {
   Button,
   Card,
@@ -7,9 +10,9 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-import Header from "components/Header/Header";
-import React, { useEffect, useState } from "react";
-import { database } from "../../firebase/index";
+import { SnackbarProvider } from 'notistack';
+import React, { useEffect, useState } from 'react';
+import { database } from '../../firebase/index';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -18,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Auction() {
+export default function Auction({ user }) {
   const classes = useStyles();
   const [data, setData] = useState(null);
 
@@ -37,17 +40,19 @@ export default function Auction() {
   }, []);
 
   if (data === null) {
-    return <h1>Loading Data, please wait...</h1>;
+    return <h1>Loading Data, Hang Tight!...</h1>
   }
 
   return (
-    <div>
-      <Header />
-      <h1 style={{ fontWeight: 700, margin: "100px 20px 0px" }}>
+    <div className={classes.root}>
+      <Header user={user} />
+      <h1 style={{ fontWeight: 700, margin: '100px 20px 0px' }}>
         Popular Auctions!
       </h1>
-
-      <div style={{ padding: "32px" }}>
+      <SnackbarProvider>
+        <Form title=" Get your Data Auctioned by the rest" user={user} />
+      </SnackbarProvider>
+      {/* <div style={{padding: '32px'}}>
         <Grid container spacing={3}>
           {data.map((item, index) => (
             <Grid item xs={12} md={4} lg={3} style={{ margin: "45px 0px" }}>
@@ -89,7 +94,7 @@ export default function Auction() {
             </Grid>
           ))}
         </Grid>
-      </div>
+      </div> */}
     </div>
   );
 }
