@@ -9,28 +9,41 @@ import Success from "components/stripe/success";
 import Failure from "components/stripe/failure";
 import Auction from "views/Auction";
 import Buy from "views/Buy/Buy";
+import { InstantSearch } from "react-instantsearch-dom";
+import algoliasearch from "algoliasearch";
+
+const searchClient = algoliasearch(
+  "ASUCCYGC0G",
+  "0cde706d63c7a3879f8df93bc62c6266"
+);
 
 const renderRoutes = (user) => (
-  <Suspense fallback={<LinearProgress />}>
-    <Switch>
-      <Route
-        path="/"
-        exact
-        render={(props) => <Home user={user} {...props} />}
-      />
-      <Route
-        path="/components"
-        exact
-        render={(props) => <Components {...props} />}
-      />
-      <Route path="/login" exact render={(props) => <LoginPage {...props} />} />
-      <Route path="/profile-page" exact render={(props) => <ProfilePage />} />
-      <Route path="/success" exact render={(props) => <Success />} />
-      <Route path="/canceled" exact render={(props) => <Failure />} />
-      <Route path="/auction" exact render={(props) => <Auction />} />
-      <Route path="/buy" exact render={(props) => <Buy/>}/>
-    </Switch>
-  </Suspense>
+  <InstantSearch indexName="dev_DATASET" searchClient={searchClient}>
+    <Suspense fallback={<LinearProgress />}>
+      <Switch>
+        <Route
+          path="/"
+          exact
+          render={(props) => <Home user={user} {...props} />}
+        />
+        <Route
+          path="/components"
+          exact
+          render={(props) => <Components {...props} />}
+        />
+        <Route
+          path="/login"
+          exact
+          render={(props) => <LoginPage {...props} />}
+        />
+        <Route path="/profile-page" exact render={(props) => <ProfilePage />} />
+        <Route path="/success" exact render={(props) => <Success />} />
+        <Route path="/canceled" exact render={(props) => <Failure />} />
+        <Route path="/auction" exact render={(props) => <Auction />} />
+        <Route path="/buy" exact render={(props) => <Buy />} />
+      </Switch>
+    </Suspense>
+  </InstantSearch>
 );
 
 function Routes({ user }) {

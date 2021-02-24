@@ -14,6 +14,30 @@ import { signInWithGoogle, logout } from "../../firebase";
 import StripeCheckoutButton from "../stripe";
 import { Link, useHistory } from "react-router-dom";
 
+import { connectSearchBox } from "react-instantsearch-dom";
+
+function SearchBar({ currentRefinement, isSearchStalled, refine }) {
+  return (
+    <Grid container spacing={1} alignItems="flex-end" className="search">
+      <Grid item style={{ width: "90%" }}>
+        <TextField
+          id="input-with-icon-grid"
+          label="Which dataset are you looking for?"
+          style={{ width: "100%" }}
+          value={currentRefinement}
+          onChange={(event) => refine(event.currentTarget.value)}
+        />
+      </Grid>
+      <Grid item>
+        <SearchIcon />
+      </Grid>
+      {isSearchStalled ? "Loading data" : ""}
+    </Grid>
+  );
+}
+
+const CustomSearchBox = connectSearchBox(SearchBar);
+
 export default function Header({ user }) {
   const [openDialog, setopenDialog] = useState(false);
 
@@ -64,18 +88,7 @@ export default function Header({ user }) {
         <button className="block round">Sell</button>
         <button className="block round">Today&apos;s Hits</button>
       </section>
-      <Grid container spacing={1} alignItems="flex-end" className="search">
-        <Grid item style={{ width: "90%" }}>
-          <TextField
-            id="input-with-icon-grid"
-            label="Which dataset are you looking for?"
-            style={{ width: "100%" }}
-          />
-        </Grid>
-        <Grid item>
-          <SearchIcon />
-        </Grid>
-      </Grid>
+      <CustomSearchBox />
       <div className="auth-btn">
         <button
           className="block round"
