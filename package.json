@@ -30,6 +30,7 @@
     "react-instantsearch-dom": "^6.10.0",
     "react-material-ui-form-validator": "^2.1.4",
     "react-router-dom": "5.2.0",
+    "react-router-hash-link": "^2.4.0",
     "react-scripts": "3.4.1",
     "react-slick": "0.26.1",
     "react-stripe-checkout": "^2.6.3",
