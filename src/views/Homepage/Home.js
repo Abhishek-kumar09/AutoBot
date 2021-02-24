@@ -33,7 +33,7 @@ export default function Home({ user }) {
       </section>
       {/*<div className="divider" />*/}
       <section id="why-autobot">
-        <h2>Why Auto Bot</h2>
+        <h2 style={{ zIndex: "2" }}>Why Auto Bot</h2>
         <h3>
           Getting the dataset that matches the criteria for your Machine
           Learning Model is hard. We get it. That is why we create Auto Bot to

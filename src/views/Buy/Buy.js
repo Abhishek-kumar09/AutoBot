@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Auction() {
+export default function Buy() {
   const classes = useStyles();
   const [data, setData] = useState(null);
 
@@ -44,7 +44,7 @@ export default function Auction() {
     <div>
       <Header />
       <h1 style={{ fontWeight: 700, margin: "100px 20px 0px" }}>
-        Popular Auctions!
+        Explore our library of datasets!
       </h1>
 
       <div style={{ padding: "32px" }}>

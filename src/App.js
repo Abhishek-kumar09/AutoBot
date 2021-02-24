@@ -14,6 +14,8 @@ export default function App() {
       setUser(user);
       // console.log('user', user)
     });
+
+    require("dotenv").config();
   }, []);
 
   return (

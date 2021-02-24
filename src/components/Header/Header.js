@@ -51,16 +51,16 @@ export default function Header({ user }) {
         <h3>Auto Bot</h3>
       </Link>
       <section className="button-group">
-        <StripeCheckoutButton />
-        {/* <button className="block round">Buy</button> */}
+        {/*<StripeCheckoutButton />*/}
         <button
-          className="block round"
+          className="block round accent"
           onClick={() => {
-            history.push("/auction");
+            history.push("/buy");
           }}
         >
-          Auction
+          Buy
         </button>
+        <button className="block round">Auction</button>
         <button className="block round">Sell</button>
         <button className="block round">Today&apos;s Hits</button>
       </section>
