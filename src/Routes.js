@@ -8,6 +8,7 @@ import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import Success from 'components/stripe/success'
 import Failure from 'components/stripe/failure'
 import Auction from 'views/Auction'
+import Sell from 'views/Sell'
 
 const renderRoutes = (user) => (
   <Suspense fallback={<LinearProgress />}>
@@ -59,6 +60,13 @@ const renderRoutes = (user) => (
         exact
         render={props => (
           <Auction user={user} />
+        )}
+      />
+      <Route
+        path="/sell"
+        exact
+        render={props => (
+          <Sell user={user} />
         )}
       />
     </Switch>

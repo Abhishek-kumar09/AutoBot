@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 // import axios from 'axios';
 import { useSnackbar } from 'notistack';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SelectValidator,
   TextValidator,
@@ -63,11 +63,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Form({ ...rest }) {
+function Form({ title, user, ...rest }) {
   const classes = useStyles();
 
   const [formData, updateFormData] = useState({});
   const [submitting, setSubmitting] = useState(0);
+
+  useEffect(() => {
+    console.log(user)
+    if (user) {
+      updateFormData({
+        email: user.email,
+        name: user.displayName
+      })
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const { enqueueSnackbar } = useSnackbar();
 
@@ -116,7 +126,7 @@ function Form({ ...rest }) {
     <Paper elevation={20} className={classes.root} {...rest}>
       <Container className={classes.container}>
         <Typography align="center" className={classes.mainHeading} variant="h3">
-          Get your Data Auctioned by the rest
+          {title}
         </Typography>
         <Typography
           align="center"
@@ -132,6 +142,7 @@ function Form({ ...rest }) {
           <Typography variant="caption">Name</Typography>
           <TextValidator
             key="name"
+            placeholder="What should we call You"
             className={classes.textField}
             variant="outlined"
             value={formData.name}
@@ -147,6 +158,7 @@ function Form({ ...rest }) {
               <Typography variant="caption">Contact Number</Typography>
               <TextValidator
                 key="contact"
+                placeholder=""
                 className={classes.textField}
                 variant="outlined"
                 value={formData.phone}
@@ -189,6 +201,7 @@ function Form({ ...rest }) {
           <Typography variant="caption">Dataset Type</Typography>
           <SelectValidator
             key="topic"
+            placeholder="Does it fall in some category"
             name="topic"
             className={classes.textField}
             variant="outlined"
@@ -217,6 +230,22 @@ function Form({ ...rest }) {
             className={classes.textField}
             variant="outlined"
             value={formData.dbname}
+            fullWidth
+            onChange={handleChange}
+            validators={['required']}
+            errorMessages={['This is a required field']}
+          />
+
+          <Typography variant="caption">
+            Category
+          </Typography>
+          <TextValidator
+            key="category"
+            name="category"
+            placeholder="Does it fall in some category"
+            className={classes.textField}
+            variant="outlined"
+            value={formData.category}
             fullWidth
             onChange={handleChange}
             validators={['required']}
