@@ -58,7 +58,7 @@ const renderRoutes = (user) => (
         path="/auction"
         exact
         render={props => (
-          <Auction />
+          <Auction user={user} />
         )}
       />
     </Switch>

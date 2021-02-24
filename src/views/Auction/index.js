@@ -1,5 +1,7 @@
-import { Button, Card, CardActions, CardContent, Grid, makeStyles, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
+import Form from 'components/Form';
 import Header from 'components/Header/Header';
+import { SnackbarProvider } from 'notistack';
 import React, { useEffect, useState } from 'react';
 import { database } from '../../firebase/index';
 
@@ -10,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function Auction() {
+export default function Auction({ user }) {
 
   const classes = useStyles();
   const [data, setData] = useState(null);
@@ -31,17 +33,19 @@ export default function Auction() {
   }, [])
 
   if (data === null) {
-    return <h1>Loading Data, please wait...</h1>
+    return <h1>Loading Data, Hang Tight!...</h1>
   }
 
   return (
-    <div>
-      <Header />
+    <div className={classes.root}>
+      <Header user={user} />
       <h1 style={{ fontWeight: 700, margin: '100px 20px 0px' }}>
-        Popular Auctions!
       </h1>
+      <SnackbarProvider>
+        <Form />
+      </SnackbarProvider>
 
-      <div style={{padding: '32px'}}>
+      {/* <div style={{padding: '32px'}}>
         <Grid container spacing={3}>
 
           {data.map((item, index) => (
@@ -62,7 +66,7 @@ export default function Auction() {
           ))}
 
         </Grid>
-      </div>
+      </div> */}
     </div>
   )
 }
