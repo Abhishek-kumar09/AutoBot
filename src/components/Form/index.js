@@ -77,7 +77,7 @@ function Form({ title, user, ...rest }) {
         name: user.displayName
       })
     }
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const { enqueueSnackbar } = useSnackbar();
 
