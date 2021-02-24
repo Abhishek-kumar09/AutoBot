@@ -1,21 +1,20 @@
-import React, { useState } from "react";
 import {
-  Dialog,
-  Grid,
-  DialogTitle,
-  DialogContent,
-  Typography,
-  Button,
-  Avatar,
+  Avatar, Button, Dialog,
+
+
+  DialogContent, DialogTitle, Grid,
+
+
+  Typography
 } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
-import "./header.scss";
-import { signInWithGoogle, logout } from "../../firebase";
-import StripeCheckoutButton from "../stripe";
-import { Link, useHistory } from "react-router-dom";
-
+import React, { useState } from "react";
 import { connectSearchBox } from "react-instantsearch-dom";
+import { Link, useHistory } from "react-router-dom";
+import { logout, signInWithGoogle } from "../../firebase";
+import "./header.scss";
+
 
 function SearchBar({ currentRefinement, isSearchStalled, refine }) {
   return (
@@ -78,7 +77,7 @@ export default function Header({ user }) {
       <section className="button-group">
         {/*<StripeCheckoutButton />*/}
         <button
-          className="block round accent"
+          className="block round"
           onClick={() => {
             history.push("/buy");
           }}
@@ -96,7 +95,7 @@ export default function Header({ user }) {
       <CustomSearchBox />
       <div className="auth-btn">
         <button
-          className="block round"
+          className="block round accent"
           onClick={() => { setopenDialog(true) }}>
           {user ? user.displayName : 'Login'}
         </button>

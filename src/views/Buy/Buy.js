@@ -17,7 +17,6 @@ import {
   RefinementList,
   Configure,
   connectHits,
-  Pagination,
 } from "react-instantsearch-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -120,7 +119,7 @@ export default function Buy() {
   }
 
   return (
-    <div>
+    <div className={classes.root}>
       <Header />
       <h1 style={{ fontWeight: 700, margin: "100px 20px 0px" }}>
         Explore our library of datasets!

@@ -2,15 +2,6 @@ import { Button, Card, CardActions, Grid, Hidden, makeStyles, Typography } from 
 import CardBody from 'components/Card/CardBody';
 import Form from 'components/Form';
 import Header from 'components/Header/Header';
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Grid,
-  makeStyles,
-  Typography,
-} from "@material-ui/core";
 import { SnackbarProvider } from 'notistack';
 import React, { useEffect, useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
