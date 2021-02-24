@@ -6,6 +6,7 @@ import {
   DialogContent,
   Typography,
   Button,
+  Avatar,
 } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
@@ -61,7 +62,11 @@ export default function Header({ user }) {
         >
           Auction
         </button>
-        <button className="block round">Sell</button>
+        <button className="block round"
+          onClick={() => {
+            history.push("/sell");
+          }}
+        >Sell</button>
         <button className="block round">Today&apos;s Hits</button>
       </section>
       <Grid container spacing={1} alignItems="flex-end" className="search">
@@ -77,15 +82,20 @@ export default function Header({ user }) {
         </Grid>
       </Grid>
       <div className="auth-btn">
-        <button 
-          className="block round" 
+        <button
+          className="block round"
           onClick={() => { setopenDialog(true) }}>
-            {user ? user.displayName : 'Login'}
+          {user ? user.displayName : 'Login'}
         </button>
+        {
+          user
+            ? <Avatar src={user.photoURL} className="round" style={{ margin: '11px 0px 0px 8px', height: '48px', width: '48px' }} ></Avatar>
+            : ''
+        }
       </div>
 
       <Dialog maxWidth={'xs'} onClose={handleClose} open={openDialog} style={{ textAlign: 'center' }}>
-        <DialogTitle id="simple-dialog-title">{user? 'Logout From AutoBot' : 'Login to AutoBot'}</DialogTitle>
+        <DialogTitle id="simple-dialog-title">{user ? 'Logout From AutoBot' : 'Login to AutoBot'}</DialogTitle>
         <DialogContent className="dialog-content">
           <Typography>Your destination for all the ML queries</Typography>
           <Typography>
@@ -106,10 +116,10 @@ export default function Header({ user }) {
               Logout
             </Button>
           ) : (
-            <Button className="block round accent" onClick={handleGoogleAuth}>
-              Google Sign In
-            </Button>
-          )}
+              <Button className="block round accent" onClick={handleGoogleAuth}>
+                Google Sign In
+              </Button>
+            )}
         </DialogContent>
       </Dialog>
     </div>

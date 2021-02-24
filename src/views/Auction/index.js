@@ -42,7 +42,7 @@ export default function Auction({ user }) {
       <h1 style={{ fontWeight: 700, margin: '100px 20px 0px' }}>
       </h1>
       <SnackbarProvider>
-        <Form />
+        <Form title=" Get your Data Auctioned by the rest" user={user} />
       </SnackbarProvider>
 
       {/* <div style={{padding: '32px'}}>
