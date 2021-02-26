@@ -1,5 +1,6 @@
 import { Grid } from "@material-ui/core";
 import Footer from "components/Footer/Footer";
+import HowItWorks from "components/HowItWorks";
 import React from "react";
 import { HashLink } from "react-router-hash-link";
 import heroBg from "../../assets/img/hero-bg.gif";
@@ -46,6 +47,9 @@ export default function Home({ user }) {
           Learning Model is hard. We get it. That is why we create Auto Bot to
           help your buy/auction/sell the dataset of your choices.
         </h3>
+      </section>
+      <section id="howitworks">
+        <HowItWorks />
       </section>
       <Footer />
     </div>
