@@ -1,19 +1,42 @@
-import React, { useState } from "react";
 import {
-  Dialog,
-  Grid,
-  DialogTitle,
-  DialogContent,
-  Typography,
-  Button,
-  Avatar,
+  Avatar, Button, CircularProgress, Dialog,
+  DialogContent, DialogTitle, Grid,
+  Typography
 } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
-import "./header.scss";
-import { signInWithGoogle, logout } from "../../firebase";
-import StripeCheckoutButton from "../stripe";
+import React, { useState } from "react";
+import { connectSearchBox } from "react-instantsearch-dom";
 import { Link, useHistory } from "react-router-dom";
+import { logout, signInWithGoogle } from "../../firebase";
+import "./header.scss";
+
+
+function SearchBar({ currentRefinement, isSearchStalled, refine }) {
+  return (
+    <Grid container spacing={1} alignItems="flex-end" className="search">
+      <Grid item style={{ width: "90%" }}>
+        <TextField
+          id="input-with-icon-grid"
+          label="Which dataset are you looking for?"
+          style={{ width: "100%" }}
+          value={currentRefinement}
+          onChange={(event) => refine(event.currentTarget.value)}
+        />
+      </Grid>
+      {isSearchStalled ?
+        <Grid item>
+          <CircularProgress size={25} />
+        </Grid>
+        : <Grid item>
+          <SearchIcon />
+        </Grid>
+      }
+    </Grid>
+  );
+}
+
+export const CustomSearchBox = connectSearchBox(SearchBar);
 
 export default function Header({ user }) {
   const [openDialog, setopenDialog] = useState(false);
@@ -52,16 +75,19 @@ export default function Header({ user }) {
         <h3>Auto Bot</h3>
       </Link>
       <section className="button-group">
-        <StripeCheckoutButton />
-        {/* <button className="block round">Buy</button> */}
         <button
           className="block round"
           onClick={() => {
-            history.push("/auction");
+            history.push("/buy");
           }}
         >
-          Auction
+          Buy
         </button>
+        <button className="block round"
+          onClick={() => {
+            history.push("/auction");
+          }}
+        >Auction</button>
         <button className="block round"
           onClick={() => {
             history.push("/sell");
@@ -69,21 +95,10 @@ export default function Header({ user }) {
         >Sell</button>
         <button className="block round">Today&apos;s Hits</button>
       </section>
-      <Grid container spacing={1} alignItems="flex-end" className="search">
-        <Grid item style={{ width: "90%" }}>
-          <TextField
-            id="input-with-icon-grid"
-            label="Which dataset are you looking for?"
-            style={{ width: "100%" }}
-          />
-        </Grid>
-        <Grid item>
-          <SearchIcon />
-        </Grid>
-      </Grid>
+      <CustomSearchBox />
       <div className="auth-btn">
         <button
-          className="block round"
+          className="block round accent"
           onClick={() => { setopenDialog(true) }}>
           {user ? user.displayName : 'Login'}
         </button>

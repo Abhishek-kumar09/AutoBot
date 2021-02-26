@@ -7,15 +7,14 @@ import React, { useEffect, useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import { firestore } from '../../firebase/index';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {},
   typography: {
-    margin: '8px 0px'
-  }
-}))
+    margin: "8px 0px",
+  },
+}));
 
 export default function Auction({ user }) {
-
   const classes = useStyles();
   const [data, setData] = useState(null);
   const [hide, setHide] = useState(true);
@@ -116,5 +115,5 @@ export default function Auction({ user }) {
         </Hidden>
       </div>
     </div>
-  )
+  );
 }

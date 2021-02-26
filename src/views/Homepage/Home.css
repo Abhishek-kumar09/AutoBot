@@ -1,0 +1,55 @@
+#home {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+#home #hero {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-inline: 5vw;
+  height: 100vh;
+}
+#home #hero div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 1vw;
+}
+#home #hero div .btn-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 2vw;
+  width: 80%;
+  justify-content: space-around;
+}
+#home #hero div .btn-group .block {
+  height: 7vh;
+  font-size: medium;
+}
+#home #why-autobot {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-inline: 20vw;
+  position: relative;
+  width: 100vw;
+  background-color: #00cba9;
+  margin-top: 250px;
+  color: white;
+  height: 100vh;
+}
+#home #why-autobot::before {
+  background: url("../../assets/img/wave.svg") center bottom;
+  background-size: cover;
+  bottom: 90%;
+  content: "";
+  height: 400px;
+  position: absolute;
+  width: 100%;
+}
+
+/*# sourceMappingURL=Home.css.map */

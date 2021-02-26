@@ -21,8 +21,9 @@
       .btn-group {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         margin-top: 2vw;
-        width: 80%;
+        width: 100%;
         justify-content: space-around;
 
         .block {
