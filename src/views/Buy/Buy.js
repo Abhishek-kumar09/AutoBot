@@ -3,37 +3,58 @@ import {
   Card,
   CardActions,
   CardContent,
+  Container,
   Grid,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
+import Pagination from '@material-ui/lab/Pagination';
 import Header from "components/Header/Header";
-import React, { useEffect, useState } from "react";
-import { database } from "../../firebase/index";
-import "./Buy.css";
-
+import CustomizedInputBase from "components/search";
+import React, { useState } from "react";
 import {
   ClearRefinements,
-  RefinementList,
+
   Configure,
   connectHits,
+
+  connectPagination, RefinementList
 } from "react-instantsearch-dom";
+import "./Buy.css";
+
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    // backgroundColor: '#fff'
+  },
   typography: {
     margin: "8px 0px",
   },
+  grid: {
+    backgroundColor: '#fff',
+    color: '#000',
+    marginTop: '40px'
+  },
+  rlist: {
+    '& .ais-RefinementList-labelText ': {
+      color: '#393e46',
+    },
+    '& .ais-RefinementList-count': {
+      color: '#29a19c',
+    }
+  },
+  pagination: {
+    width: 'max-content',
+    margin: '40px auto'
+  }
 }));
 
 const Hits = ({ hits }) => {
   return (
     <Grid
       container
-      spacing={9}
+      spacing={3}
       direction="row"
-      justify="space-evenly"
-      alignItems="center"
       style={{
         flexWrap: "wrap",
       }}
@@ -51,15 +72,16 @@ function Hit({ item, index }) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={3} md={3} lg={3} spacing={4} style={{ margin: "45px 0px" }}>
+    <Grid item xs={12} md={4} spacing={2}>
       <Card
         elevation={10}
         style={{
-          height: "400px",
+          height: '100%',
           display: "flex",
           flexDirection: "column",
           backgroundColor: "#E5F6F2",
           overflowY: "hidden",
+          marginBottom: '20px'
         }}
       >
         <div
@@ -100,24 +122,6 @@ export default function Buy() {
   const classes = useStyles();
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    const dbref = database.ref("/");
-    dbref.on("value", (snapshot) => {
-      const datasets = snapshot.val();
-      const dataSetArray = [];
-      for (let i in datasets) {
-        // console.log(datasets[i])
-        dataSetArray.push({ i, ...datasets[i] });
-      }
-      console.log(dataSetArray);
-      setData(dataSetArray);
-    });
-  }, []);
-
-  if (data === null) {
-    return <h1>Loading Data, please wait...</h1>;
-  }
-
   return (
     <div className={classes.root}>
       <Header />
@@ -125,34 +129,52 @@ export default function Buy() {
         Explore our library of datasets!
       </h1>
 
-      <div style={{ padding: "32px" }}>
+      <Container style={{ padding: "32px" }}>
         <Grid
-          item
-          spacing={3}
-          style={{ display: "flex", flexDirection: "row" }}
+          container
+          spacing={9}
         >
-          <Grid spacing={3}>
+          <Grid item xs={12} sm={6} md={3} className={classes.grid}>
             <ClearRefinements />
-            <h3>Data types</h3>
+            <h3>Apply Filters</h3>
             <RefinementList
               attribute="category"
-              style={{ backgroundColor: "red" }}
+              className={classes.rlist}
             />
-            <Configure hitsPerPage={20} />
+            <Configure hitsPerPage={5} />
           </Grid>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "space-evenly",
-              flexWrap: "wrap",
-            }}
-          >
+          <Grid container item xs={12} sm={6} md={9}>
+            <CustomizedInputBase />
             <CustomHits />
-          </div>
+            <CustomPagination
+            // optional parameters
+            // defaultRefinement={number}
+            />
+          </Grid>
         </Grid>
-      </div>
+      </Container>
     </div>
   );
 }
+
+
+
+
+const Pagination2 = ({ nbPages, refine }) => {
+  const classes = useStyles();
+
+  return <Pagination
+    variant="text"
+    color="primary"
+    boundaryCount={3}
+    size="large"
+    className={classes.pagination}
+    count={nbPages}
+    onChange={(event, newPage) => {
+      event.preventDefault()
+      refine(newPage);
+    }}
+  />
+};
+
+const CustomPagination = connectPagination(Pagination2);

@@ -11,7 +11,7 @@ import Auction from 'views/Auction'
 import Sell from 'views/Sell'
 import Buy from "views/Buy/Buy";
 import { InstantSearch } from "react-instantsearch-dom";
-import algoliasearch from "algoliasearch";
+import algoliasearch from "algoliasearch/lite";
 
 const searchClient = algoliasearch(
   "ASUCCYGC0G",
@@ -71,7 +71,7 @@ const renderRoutes = (user) => (
             <Auction user={user} />
           )}
         />
-        <Route path="/buy" exact render={(props) => <Buy />} />
+        <Route path="/buy" exact render={(props) => <Buy user={user} />} />
         <Route
           path="/sell"
           exact

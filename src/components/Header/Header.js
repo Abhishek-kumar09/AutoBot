@@ -1,10 +1,6 @@
 import {
-  Avatar, Button, Dialog,
-
-
+  Avatar, Button, CircularProgress, Dialog,
   DialogContent, DialogTitle, Grid,
-
-
   Typography
 } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
@@ -28,15 +24,19 @@ function SearchBar({ currentRefinement, isSearchStalled, refine }) {
           onChange={(event) => refine(event.currentTarget.value)}
         />
       </Grid>
-      <Grid item>
-        <SearchIcon />
-      </Grid>
-      {isSearchStalled ? "Loading data" : ""}
+      {isSearchStalled ?
+        <Grid item>
+          <CircularProgress size={25} />
+        </Grid>
+        : <Grid item>
+          <SearchIcon />
+        </Grid>
+      }
     </Grid>
   );
 }
 
-const CustomSearchBox = connectSearchBox(SearchBar);
+export const CustomSearchBox = connectSearchBox(SearchBar);
 
 export default function Header({ user }) {
   const [openDialog, setopenDialog] = useState(false);
