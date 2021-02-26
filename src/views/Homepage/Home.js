@@ -23,7 +23,7 @@ export default function Home({ user }) {
           <div className="btn-group">
             <a href="/">
               <button className="block round accent">
-                Start Free! No Credit Card Required
+                Start Free! Learn Models, then Data
               </button>
             </a>
             <HashLink smooth to="#why-autobot">
