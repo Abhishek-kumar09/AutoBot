@@ -21,7 +21,7 @@ export default function Home({ user }) {
             immediately. We provide the data on your preferences.
           </h3>
           <div className="btn-group">
-            <a href="/">
+            <a href="/learn">
               <button className="block round accent">
                 Start Free! Learn Models, then Data
               </button>
