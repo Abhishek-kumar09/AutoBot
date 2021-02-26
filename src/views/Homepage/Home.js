@@ -30,12 +30,16 @@ export default function Home({ user }) {
             </HashLink>
           </div>
         </Grid>
-        <Grid item xs={12} md={7}>
-          <img src={heroBg} alt="hero" />
+        <Grid
+          item
+          xs={12}
+          md={7}
+        >
+          <img src={heroBg} alt="hero" height='100%' width="100%" />
         </Grid>
       </Grid>
       {/*<div className="divider" />*/}
-      <section id="why-autobot">
+      <section id="why-autobot" >
         <h2 style={{ zIndex: "2", marginTop: '100px' }}>Why Auto Bot</h2>
         <h3>
           Getting the dataset that matches the criteria for your Machine

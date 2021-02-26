@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import Routes from "./Route";
+import Routes from "./Routes";
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
