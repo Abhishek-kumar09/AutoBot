@@ -1,15 +1,15 @@
-import { LinearProgress } from "@material-ui/core";
-import React, { Suspense } from "react";
-import { Route, Switch } from "react-router-dom";
-import Home from "views/Homepage/Home";
+import { LinearProgress } from '@material-ui/core';
+import React, { Suspense } from 'react';
+import { Route, Switch, } from 'react-router-dom'
+import Home from 'views/Homepage/Home'
 import Components from "views/Components/Components.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
 import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import Success from 'components/stripe/success'
 import Failure from 'components/stripe/failure'
 import Auction from 'views/Auction'
-import Sell from 'views/Sell'
 import Buy from "views/Buy/Buy";
+import Sell from 'views/Sell'
 import { InstantSearch } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch/lite";
 
@@ -18,9 +18,10 @@ const searchClient = algoliasearch(
   "0cde706d63c7a3879f8df93bc62c6266"
 );
 
+
 const renderRoutes = (user) => (
-  <InstantSearch indexName="dev_DATASET" searchClient={searchClient}>
-    <Suspense fallback={<LinearProgress />}>
+  <Suspense fallback={<LinearProgress />}>
+    <InstantSearch indexName="dev_DATASET" searchClient={searchClient}>
       <Switch>
         <Route
           path="/"
@@ -71,7 +72,6 @@ const renderRoutes = (user) => (
             <Auction user={user} />
           )}
         />
-        <Route path="/buy" exact render={(props) => <Buy user={user} />} />
         <Route
           path="/sell"
           exact
@@ -79,13 +79,15 @@ const renderRoutes = (user) => (
             <Sell user={user} />
           )}
         />
+        <Route path="/buy" exact render={(props) => <Buy user={user} />} />
       </Switch>
-    </Suspense>
-  </InstantSearch>
+    </InstantSearch>
+  </Suspense>
 );
 
 function Routes({ user }) {
   return renderRoutes(user);
 }
+
 
 export default Routes;

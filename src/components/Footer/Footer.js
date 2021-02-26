@@ -33,38 +33,20 @@ export default function Footer(props) {
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
               <a
-                href="https://www.creative-tim.com/?ref=mkr-footer"
+                href="https://fellowship.mlh.io/programs/explorer"
                 className={classes.block}
                 target="_blank"
               >
-                Creative Tim
+                Auto-Bot and Major League Hacking
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
               <a
-                href="https://www.creative-tim.com/presentation?ref=mkr-footer"
+                href="https://github.com/Abhishek-kumar09/AutoBot"
                 className={classes.block}
                 target="_blank"
               >
-                About us
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a
-                href="http://blog.creative-tim.com/?ref=mkr-footer"
-                className={classes.block}
-                target="_blank"
-              >
-                Blog
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a
-                href="https://www.creative-tim.com/license?ref=mkr-footer"
-                className={classes.block}
-                target="_blank"
-              >
-                Licenses
+                Github
               </a>
             </ListItem>
           </List>
@@ -73,13 +55,27 @@ export default function Footer(props) {
           &copy; {1900 + new Date().getYear()} , made with{" "}
           <Favorite className={classes.icon} /> by{" "}
           <a
-            href="https://www.creative-tim.com?ref=mkr-footer"
+            href="https://github.com/abhishek-kumar09"
             className={aClasses}
             target="_blank"
           >
-            Creative Tim
+            Abhishek
+          </a>{", "}
+          <a
+            href="https://github.com/petercrackthecode"
+            className={aClasses}
+            target="_blank"
+          >
+            Peter
+          </a>{" and "}
+          <a
+            href="https://github.com/devthepenguin"
+            className={aClasses}
+            target="_blank"
+          >
+            Shivam
           </a>{" "}
-          for a better web.
+          for a better world.
         </div>
       </div>
     </footer>

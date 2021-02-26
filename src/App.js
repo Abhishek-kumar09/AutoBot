@@ -1,10 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import Routes from "./Routes";
+import Routes from "./Route";
+
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import { auth } from "./firebase";
 const history = createBrowserHistory();
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#025955'
+    },
+    secondary: {
+      main: '#03AE86'
+    }
+  }
+});
 
 export default function App() {
   const [currentUser, setUser] = useState(null);
@@ -19,8 +32,10 @@ export default function App() {
   }, []);
 
   return (
-    <Router history={history}>
-      <Routes user={currentUser} />
-    </Router>
+    <MuiThemeProvider theme={theme}>
+      <Router history={history}>
+        <Routes user={currentUser} />
+      </Router>
+    </MuiThemeProvider>
   );
 }

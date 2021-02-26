@@ -11,14 +11,13 @@ import {
 import Pagination from '@material-ui/lab/Pagination';
 import Header from "components/Header/Header";
 import CustomizedInputBase from "components/search";
-import React, { useState } from "react";
+import React from "react";
 import {
   ClearRefinements,
-
   Configure,
   connectHits,
-
-  connectPagination, RefinementList
+  connectPagination,
+  RefinementList
 } from "react-instantsearch-dom";
 import "./Buy.css";
 
@@ -120,7 +119,6 @@ function Hit({ item, index }) {
 
 export default function Buy() {
   const classes = useStyles();
-  const [data, setData] = useState(null);
 
   return (
     <div className={classes.root}>
@@ -141,15 +139,12 @@ export default function Buy() {
               attribute="category"
               className={classes.rlist}
             />
-            <Configure hitsPerPage={5} />
+            <Configure hitsPerPage={9} />
           </Grid>
           <Grid container item xs={12} sm={6} md={9}>
             <CustomizedInputBase />
             <CustomHits />
-            <CustomPagination
-            // optional parameters
-            // defaultRefinement={number}
-            />
+            <CustomPagination />
           </Grid>
         </Grid>
       </Container>
@@ -160,7 +155,7 @@ export default function Buy() {
 
 
 
-const Pagination2 = ({ nbPages, refine }) => {
+const PaginationImplementation = ({ nbPages, refine }) => {
   const classes = useStyles();
 
   return <Pagination
@@ -177,4 +172,4 @@ const Pagination2 = ({ nbPages, refine }) => {
   />
 };
 
-const CustomPagination = connectPagination(Pagination2);
+const CustomPagination = connectPagination(PaginationImplementation);
