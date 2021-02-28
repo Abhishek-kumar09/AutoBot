@@ -21,7 +21,7 @@ const searchClient = algoliasearch(
 
 const renderRoutes = (user) => (
   <Suspense fallback={<LinearProgress />}>
-    <InstantSearch indexName="dev_DATASET" searchClient={searchClient}>
+    <InstantSearch indexName="Prod_dataset" searchClient={searchClient}>
       <Switch>
         <Route
           path="/"
