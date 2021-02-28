@@ -108,7 +108,7 @@ function Hit({ item, index }) {
           </Typography>
         </CardContent>
         <CardActions style={{ margin: "10px 18px" }}>
-          <Button fullWidth className="round block accent">
+          <Button fullWidth className="round block accent" href={item.url}>
             Get Now {item.dataset_size}
           </Button>
         </CardActions>
