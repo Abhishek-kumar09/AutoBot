@@ -8,6 +8,7 @@ import {
   makeStyles,
   Typography
 } from "@material-ui/core";
+import { StarOutlined } from "@material-ui/icons";
 import Pagination from '@material-ui/lab/Pagination';
 import Header from "components/Header/Header";
 import CustomizedInputBase from "components/search";
@@ -106,10 +107,17 @@ function Hit({ item, index }) {
           <Typography className={classes.typography}>
             category: {item.category}
           </Typography>
+          <Typography className={classes.typography}>            
+            Rating: <StarOutlined style={{paddingTop: '8px', color: '#FFD700'}} /> {item.rating}
+          </Typography>
         </CardContent>
         <CardActions style={{ margin: "10px 18px" }}>
-          <Button fullWidth className="round block accent" href={item.url}>
-            Get Now {item.dataset_size}
+          <Button fullWidth className="round block" href={item.test_set_url} style={{ marginRight: '8px' }} >Test</Button>
+          <Button fullWidth className="round block" href={item.train_set_url} style={{ marginLeft: '8px' }}>Train</Button>
+        </CardActions>
+        <CardActions style={{ margin: "0px 18px 10px" }}>
+          <Button fullWidth className="round block accent" href={item.develop_set_url}>
+            Full Package {item.dataset_size.split(" ")[0] === "Unknown" ? "Download" : item.dataset_size}
           </Button>
         </CardActions>
       </Card>
@@ -135,8 +143,14 @@ export default function Buy() {
           <Grid item xs={12} sm={6} md={3} className={classes.grid}>
             <ClearRefinements />
             <h3>Apply Filters</h3>
+            <h6>Categories</h6>
             <RefinementList
               attribute="category"
+              className={classes.rlist}
+            />
+            <h6>Ratings</h6>
+            <RefinementList
+              attribute="rating"
               className={classes.rlist}
             />
             <Configure hitsPerPage={9} />
