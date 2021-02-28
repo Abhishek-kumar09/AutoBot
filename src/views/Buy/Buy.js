@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import Pagination from '@material-ui/lab/Pagination';
 import Header from "components/Header/Header";
-import CustomizedInputBase from "components/search";
+import CustomizedInputBase from "components/Search";
 import React from "react";
 import {
   ClearRefinements,
