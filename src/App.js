@@ -27,8 +27,6 @@ export default function App() {
       setUser(user);
       // console.log('user', user)
     });
-
-    console.log(`Hi`);
   }, []);
 
   return (
