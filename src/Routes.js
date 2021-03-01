@@ -8,6 +8,7 @@ import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import Success from "components/stripe/success";
 import Failure from "components/stripe/failure";
 import Auction from "views/Auction";
+import TopHits from "views/TopHits";
 import Buy from "views/Buy/Buy";
 import Sell from "views/Sell";
 import { InstantSearch } from "react-instantsearch-dom";
@@ -49,6 +50,11 @@ const renderRoutes = (user) => (
         <Route path="/sell" exact render={(props) => <Sell user={user} />} />
         <Route path="/learn" exact render={(props) => <Learn user={user} />} />
         <Route path="/buy" exact render={(props) => <Buy user={user} />} />
+        <Route
+          path="/top-hits"
+          exact
+          render={(props) => <TopHits user={user} />}
+        />
       </Switch>
     </InstantSearch>
   </Suspense>

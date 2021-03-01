@@ -12,7 +12,7 @@ import { StarOutlined } from "@material-ui/icons";
 import Pagination from "@material-ui/lab/Pagination";
 import Header from "components/Header/Header";
 import CustomizedInputBase from "components/Search";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
   ClearRefinements,
   Configure,
@@ -69,7 +69,12 @@ const Hits = ({ hits }) => {
 const CustomHits = connectHits(Hits);
 
 function Hit({ item, index }) {
+  const [docIdToInterestScore, setInterestScore] = useState({});
   const classes = useStyles();
+
+  const incrementInterestScore = (docId, currentInterestScore) => {
+
+  }
 
   const getColorClass = (category) => {
     switch (category) {
@@ -157,7 +162,7 @@ function Hit({ item, index }) {
   );
 }
 
-export default function Buy() {
+export default function Buy({user}) {
   const classes = useStyles();
 
   return (

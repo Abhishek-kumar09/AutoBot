@@ -1,0 +1,46 @@
+#top-hits {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #c2e59c; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #64b3f4,
+    #c2e59c
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #64b3f4,
+    #c2e59c
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+
+  padding-top: 90px;
+
+  table {
+    min-width: 80vw;
+    max-width: 95vw;
+
+    th {
+      border: 1px solid white;
+      text-align: left;
+      padding: 8px;
+    }
+
+    thead {
+      th {
+        font-size: 20px;
+        font-style: italic;
+        font-weight: bold;
+        background-color: white;
+        color: grey;
+      }
+    }
+    tr:nth-child(even) {
+      background-color: rgb(47, 154, 165);
+    }
+  }
+}
