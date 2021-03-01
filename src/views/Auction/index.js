@@ -150,7 +150,7 @@ export default function Auction({ user }) {
             </HashLink>
           </Grid>
         </Grid>
-        <h1 style={{ fontWeight: 700, margin: "100px 20px 0px" }}></h1>
+        <div style={{ fontWeight: 700, margin: "100px 20px 0px" }}></div>
         <Hidden xsUp={hide}>
           <SnackbarProvider>
             <Form

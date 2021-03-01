@@ -6,19 +6,19 @@ import {
   Container,
   Grid,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import { StarOutlined } from "@material-ui/icons";
 import Pagination from "@material-ui/lab/Pagination";
 import Header from "components/Header/Header";
-import CustomizedInputBase from "components/Search";
-import React, {useState, useEffect} from "react";
+import CustomizedInputBase from "components/search";
+import React from "react";
 import {
   ClearRefinements,
   Configure,
   connectHits,
   connectPagination,
-  RefinementList,
+  RefinementList
 } from "react-instantsearch-dom";
 import "./Buy.css";
 
@@ -69,12 +69,12 @@ const Hits = ({ hits }) => {
 const CustomHits = connectHits(Hits);
 
 function Hit({ item, index }) {
-  const [docIdToInterestScore, setInterestScore] = useState({});
+  // const [docIdToInterestScore, setInterestScore] = useState({});
   const classes = useStyles();
 
-  const incrementInterestScore = (docId, currentInterestScore) => {
+  // const incrementInterestScore = (docId, currentInterestScore) => {
 
-  }
+  // }
 
   const getColorClass = (category) => {
     switch (category) {

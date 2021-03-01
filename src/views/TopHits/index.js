@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { createBrowserHistory } from "history";
-
 import Header from "../../components/Header/Header";
-import { auth } from "../../firebase";
 import { firestore } from "../../firebase/index";
 import "./TopHits.css";
-import { ViewArraySharp } from "@material-ui/icons";
 
-const history = createBrowserHistory();
 const _ = require("lodash");
 
 export default function TopHits({ user }) {
@@ -49,7 +44,7 @@ export default function TopHits({ user }) {
   useEffect(() => {
     fetchFromFirestore();
     rankDataset();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const displayData = () => {
     return data.map((aDataset, index) => (
