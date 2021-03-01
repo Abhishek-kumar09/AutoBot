@@ -6,7 +6,7 @@ import {
   Container,
   Grid,
   makeStyles,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import { StarOutlined } from "@material-ui/icons";
 import Pagination from "@material-ui/lab/Pagination";
@@ -18,7 +18,7 @@ import {
   Configure,
   connectHits,
   connectPagination,
-  RefinementList
+  RefinementList,
 } from "react-instantsearch-dom";
 import "./Buy.css";
 
@@ -162,7 +162,7 @@ function Hit({ item, index }) {
   );
 }
 
-export default function Buy({user}) {
+export default function Buy({ user }) {
   const classes = useStyles();
 
   return (

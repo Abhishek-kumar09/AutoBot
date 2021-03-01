@@ -1,6 +1,6 @@
-const algoliasearch = require('algoliasearch');
-const dotenv = require('dotenv');
-const firebase = require('firebase');
+const algoliasearch = require("algoliasearch");
+const dotenv = require("dotenv");
+const firebase = require("firebase");
 
 // load values from the .env file in this directory into process.env
 dotenv.load();
@@ -19,11 +19,10 @@ const algolia = algoliasearch(
 const index = algolia.initIndex(process.env.ALGOLIA_INDEX_NAME);
 
 // Get all datasets from Firebase
-database.ref('/').once('value', (db_datasets) => {
-
+database.ref("/").once("value", (db_datasets) => {
   // Build an array of all records to push to Algolia
   const records = [];
-  db_datasets.forEach(db_dataset => {
+  db_datasets.forEach((db_dataset) => {
     // get the key and data from the snapshot
     const childKey = db_dataset.key;
     const childData = db_dataset.val();
@@ -37,10 +36,10 @@ database.ref('/').once('value', (db_datasets) => {
   index
     .saveObjects(records)
     .then(() => {
-      console.log('Datasets imported into Algolia');
+      console.log("Datasets imported into Algolia");
     })
-    .catch(error => {
-      console.error('Error when importing Datasets into Algolia', error);
+    .catch((error) => {
+      console.error("Error when importing Datasets into Algolia", error);
       process.exit(1);
     });
 });

@@ -26,9 +26,6 @@ import Parallax from "components/Parallax/Parallax.js";
 import StripeCheckout from "components/stripe/StripeAutoCheckout";
 import React from "react";
 
-
-
-
 const useStyles = makeStyles(styles);
 
 export default function ProfilePage(props) {
@@ -43,7 +40,7 @@ export default function ProfilePage(props) {
   return (
     <div>
       <Parallax small filter image={require("assets/img/profile-bg.jpg")} />
-      <div className={classNames(classes.main,)}>
+      <div className={classNames(classes.main)}>
         <div>
           <div className={classes.container}>
             <GridContainer justify="center">
@@ -69,10 +66,8 @@ export default function ProfilePage(props) {
               </GridItem>
             </GridContainer>
             <div className={classes.description}>
-              <p>
-                Pay For the DATASET{" "}
-              </p>
-            <StripeCheckout price={100} />
+              <p>Pay For the DATASET </p>
+              <StripeCheckout price={100} />
             </div>
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={8} className={classes.navWrapper}>
@@ -110,7 +105,7 @@ export default function ProfilePage(props) {
                             />
                           </GridItem>
                         </GridContainer>
-                      )
+                      ),
                     },
                     {
                       tabButton: "Work",
@@ -147,7 +142,7 @@ export default function ProfilePage(props) {
                             />
                           </GridItem>
                         </GridContainer>
-                      )
+                      ),
                     },
                     {
                       tabButton: "Favorite",
@@ -184,8 +179,8 @@ export default function ProfilePage(props) {
                             />
                           </GridItem>
                         </GridContainer>
-                      )
-                    }
+                      ),
+                    },
                   ]}
                 />
               </GridItem>
