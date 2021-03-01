@@ -3,7 +3,7 @@ import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import Routes from "./Routes";
 
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 import { auth } from "./firebase";
 const history = createBrowserHistory();
@@ -11,12 +11,12 @@ const history = createBrowserHistory();
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#025955'
+      main: "#025955",
     },
     secondary: {
-      main: '#03AE86'
-    }
-  }
+      main: "#03AE86",
+    },
+  },
 });
 
 export default function App() {
@@ -27,8 +27,6 @@ export default function App() {
       setUser(user);
       // console.log('user', user)
     });
-
-    require("dotenv").config();
   }, []);
 
   return (

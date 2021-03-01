@@ -1,5 +1,42 @@
 * .ais-RefinementList-list {
   list-style-type: none;
 }
+* .cards-container:hover .card {
+  filter: blur(2px);
+  transform: scale(0.9);
+  opacity: 0.5;
+}
+* .cards-container .card {
+  transition: 0.5s;
+  border-radius: 20px;
+}
+* .cards-container .card:hover {
+  filter: blur(0px);
+  transform: scale(1.1);
+  opacity: 1;
+}
+* .cards-container .card .circle {
+  position: relative;
+  width: 100%;
+  height: 170px;
+  clip-path: circle(160px at center 0);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+  color: white;
+}
+* .cards-container .card .audio {
+  background-color: #ffaf00;
+  --block-accent-color: #ffaf00;
+}
+* .cards-container .card .image {
+  background-color: #da2268;
+  --block-accent-color: #da2268;
+}
+* .cards-container .card .text {
+  background-color: #bb02ff;
+  --block-accent-color: #bb02ff;
+}
 
 /*# sourceMappingURL=Buy.css.map */

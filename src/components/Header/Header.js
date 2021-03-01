@@ -1,7 +1,12 @@
 import {
-  Avatar, Button, CircularProgress, Dialog,
-  DialogContent, DialogTitle, Grid,
-  Typography
+  Avatar,
+  Button,
+  CircularProgress,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Grid,
+  Typography,
 } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
@@ -10,7 +15,6 @@ import { connectSearchBox } from "react-instantsearch-dom";
 import { Link, useHistory } from "react-router-dom";
 import { logout, signInWithGoogle } from "../../firebase";
 import "./header.scss";
-
 
 function SearchBar({ currentRefinement, isSearchStalled, refine }) {
   return (
@@ -24,14 +28,15 @@ function SearchBar({ currentRefinement, isSearchStalled, refine }) {
           onChange={(event) => refine(event.currentTarget.value)}
         />
       </Grid>
-      {isSearchStalled ?
+      {isSearchStalled ? (
         <Grid item>
           <CircularProgress size={25} />
         </Grid>
-        : <Grid item>
+      ) : (
+        <Grid item>
           <SearchIcon />
         </Grid>
-      }
+      )}
     </Grid>
   );
 }
@@ -83,42 +88,69 @@ export default function Header({ user }) {
         >
           Buy
         </button>
-        <button className="block round"
+        <button
+          className="block round"
           onClick={() => {
             history.push("/auction");
           }}
-        >Auction</button>
-        <button className="block round"
+        >
+          Auction
+        </button>
+        <button
+          className="block round"
           onClick={() => {
             history.push("/sell");
           }}
-        >Sell</button>
-        <button className="block round">Today&apos;s Hits</button>
+        >
+          Sell
+        </button>
+        <button
+          className="block round"
+          onClick={() => history.push("/top-hits")}
+        >
+          Today&apos;s Hits
+        </button>
       </section>
       <CustomSearchBox />
       <div className="auth-btn">
         <button
           className="block round accent"
-          onClick={() => { setopenDialog(true) }}>
-          {user ? user.displayName : 'Login'}
+          onClick={() => {
+            setopenDialog(true);
+          }}
+        >
+          {user ? user.displayName : "Login"}
         </button>
-        {
-          user
-            ? <Avatar src={user.photoURL} className="round" style={{ margin: '11px 0px 0px 8px', height: '48px', width: '48px' }} ></Avatar>
-            : ''
-        }
+        {user ? (
+          <Avatar
+            src={user.photoURL}
+            className="round"
+            style={{
+              margin: "11px 0px 0px 8px",
+              height: "48px",
+              width: "48px",
+            }}
+          ></Avatar>
+        ) : (
+          ""
+        )}
       </div>
 
-      <Dialog maxWidth={'xs'} onClose={handleClose} open={openDialog} style={{ textAlign: 'center' }}>
-        <DialogTitle id="simple-dialog-title">{user ? 'Logout From AutoBot' : 'Login to AutoBot'}</DialogTitle>
+      <Dialog
+        maxWidth={"xs"}
+        onClose={handleClose}
+        open={openDialog}
+        style={{ textAlign: "center" }}
+      >
+        <DialogTitle id="simple-dialog-title">
+          {user ? "Logout From AutoBot" : "Login to AutoBot"}
+        </DialogTitle>
         <DialogContent className="dialog-content">
           <Typography>Your destination for all the ML queries</Typography>
+          <Typography>Your destination for all the ML queries.</Typography>
           <Typography>
-            Your destination for all the ML queries.
-          </Typography>
-          <Typography>
-            Stop searching for your desired dataset and start building immediately.
-            We provide the data on your preferences.
+            Stop searching for your desired dataset and start building
+            immediately. We provide the data on your preferences.
           </Typography>
         </DialogContent>
         <DialogContent className="dialog-content">
@@ -131,10 +163,10 @@ export default function Header({ user }) {
               Logout
             </Button>
           ) : (
-              <Button className="block round accent" onClick={handleGoogleAuth}>
-                Google Sign In
-              </Button>
-            )}
+            <Button className="block round accent" onClick={handleGoogleAuth}>
+              Google Sign In
+            </Button>
+          )}
         </DialogContent>
       </Dialog>
     </div>

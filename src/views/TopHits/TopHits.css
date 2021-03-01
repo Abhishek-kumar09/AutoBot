@@ -1,0 +1,36 @@
+#top-hits {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #c2e59c;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #64b3f4, #c2e59c);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #64b3f4, #c2e59c);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+  padding-top: 90px;
+}
+#top-hits table {
+  min-width: 80vw;
+  max-width: 95vw;
+}
+#top-hits table th {
+  border: 1px solid white;
+  text-align: left;
+  padding: 8px;
+}
+#top-hits table thead th {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: bold;
+  background-color: white;
+  color: grey;
+}
+#top-hits table tr:nth-child(even) {
+  background-color: #2f9aa5;
+}
+
+/*# sourceMappingURL=TopHits.css.map */
