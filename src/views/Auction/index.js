@@ -64,6 +64,10 @@ export default function Auction({ user }) {
         <Typography variant="h3" align="center" style={{ marginTop: "32px" }}>
           All popular Auctions
         </Typography>
+        <Typography variant="caption" align="center" component={'div'}>
+          Auction is for requesting your desired data publicly to make models on top of it.
+          You can also request models and people to work on your data.
+        </Typography>
         <Grid container spacing={3}>
           {data.map((item, index) => (
             <Grid item xs={12} md={4} lg={3} style={{ margin: "45px 0px" }}>
@@ -111,7 +115,7 @@ export default function Auction({ user }) {
                 </CardBody>
                 <div>
                   <CardBody>
-                    Want to know more and use it in your next ML Model?
+                   Do you have something related to it? Want to work on the idea?
                   </CardBody>
                   <CardActions style={{ margin: "10px 18px" }}>
                     <Button
@@ -120,7 +124,7 @@ export default function Auction({ user }) {
                       href={item.link}
                       target="_blank"
                     >
-                      Request Claim {item.download_size}
+                      Request Claim
                     </Button>
                   </CardActions>
                 </div>
