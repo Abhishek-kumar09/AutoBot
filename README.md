@@ -18,6 +18,35 @@
 
 ## Getting Started
 
+## Contributions and PR
+
+[![GitHub issues by-label](https://img.shields.io/github/issues/abhishek-kumar09/autobot/good%20first%20issue)](https://github.com/abhishek-kumar09/autobot/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+
+- PRs should be generated against `development`.
+- Remember to run `npm run lint:fix` before creating pull request.
+- Netlify will create a preview inside pull request, please check if your work is fine.
+- When in doubt, ask your queries on discussions
+
+
+## Build Setup
+
+```bash
+# install dependencies
+npm install
+
+# development run
+npm run start
+
+# build for production
+npm run build
+```
+
+## Firebase Setup
+
+Create your firebase project
+Fill in the environment variables in `.env` file in root directory
+
+
 ### Adding Variables Local To Your Environment
 
 #### Windows
