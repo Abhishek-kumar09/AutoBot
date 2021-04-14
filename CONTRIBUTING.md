@@ -1,6 +1,6 @@
 # Contributing to AutoBot
 
-Thank you for your interest in AutoBot. It's an ML Marketplace to buy/sell/auction the datasets of your choices to train ML Models.
+Thank you for your interest in AutoBot. It's an ML Marketplace to buy/sell/auction the datasets of your choice to train ML Models.
 
 ## Getting Started
 
@@ -15,13 +15,13 @@ Thank you for your interest in AutoBot. It's an ML Marketplace to buy/sell/aucti
 - Commit your changes \
   `git add .` \
   `git commit -m "your commit message"`
-- Push the changes into your branch `git push origin "branch_name"`
+- Push the changes `git push origin "branch_name"`
 - Create a PR from your branch 🎉
 
 ## New Issue/PR Guidelines:
 
  ### Title
- - A simple description for the issue/PR.
+ - A simple description of the issue/PR.
  ### Description
  - For issues : Describle the feature/bug in detail. In case of bugs, include steps to reproduce.
  - For PRs : Describe the changes, reference the targeted issue and include screenshots if necessary.
