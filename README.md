@@ -27,6 +27,8 @@
 - Netlify will create a preview inside pull request, please check if your work is fine.
 - When in doubt, ask your queries on discussions
 
+Take a look at the [Contribution Guidelines](https://github.com/Abhishek-kumar09/AutoBot/blob/development/CONTRIBUTING.md
+) and open a new [Issue](https://github.com/Abhishek-kumar09/AutoBot/issues) or [Pull Request](https://github.com/Abhishek-kumar09/AutoBot/pulls) on GitHub.
 
 ## Build Setup
 
