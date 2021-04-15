@@ -9,7 +9,8 @@ Thank you for your interest in AutoBot. It's an ML Marketplace to buy/sell/aucti
  
  ### Steps To Contribute:
  
-- Fork and clone the repository `git clone https://github.com/Abhishek-kumar09/AutoBot.git`
+- Fork the project
+- Clone your forked repository `git clone https://github.com/<YOUR_USERNAME>/AutoBot.git`
 - Create a new branch `git checkout -b "branch_name"`
 - Make changes in that branch
 - Commit your changes \
@@ -23,7 +24,7 @@ Thank you for your interest in AutoBot. It's an ML Marketplace to buy/sell/aucti
  ### Title
  - A simple description of the issue/PR.
  ### Description
- - For issues : Describle the feature/bug in detail. In case of bugs, include steps to reproduce.
+ - For issues : Describe the feature/bug in detail. In case of bugs, include steps to reproduce.
  - For PRs : Describe the changes, reference the targeted issue and include screenshots if necessary.
  ### Solution
  - For issues : Do suggest your opinion about possible solutions/work-arounds.
